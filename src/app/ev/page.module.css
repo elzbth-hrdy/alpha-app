@@ -1,0 +1,189 @@
+/* =============================================================================
+   EV Charging Page
+   ============================================================================= */
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: var(--content-xl);
+  margin-inline: auto;
+  width: 100%;
+  padding: var(--space-6) var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: var(--space-8) var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: var(--space-8);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Page title
+   --------------------------------------------------------------------------- */
+.pageTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------------------
+   EV status layout
+   --------------------------------------------------------------------------- */
+.evStatus {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.evGauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.evGaugeLabels {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.evDetails {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.evDetailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-light-grey);
+}
+
+.evDetailRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.evDetailLabel {
+  font-size: var(--text-sm);
+  color: var(--color-mid-grey);
+  font-weight: 500;
+}
+
+.evDetailValue {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-rich-black);
+}
+
+/* ---------------------------------------------------------------------------
+   Schedule card
+   --------------------------------------------------------------------------- */
+.scheduleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.smartAlert {
+  margin-bottom: var(--space-3);
+}
+
+.scheduleHint {
+  color: var(--color-mid-grey) !important;
+  margin-bottom: var(--space-3);
+}
+
+.scheduleWrapper {
+  margin-bottom: var(--space-4);
+}
+
+.scheduleActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.actionButtons {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------------------
+   Forecast table
+   --------------------------------------------------------------------------- */
+.forecastHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.forecastTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.forecastTable th {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-mid-grey);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border-bottom: 2px solid var(--color-light-grey);
+}
+
+.forecastTable td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-light-grey);
+  color: var(--color-rich-black);
+}
+
+.forecastTable tr:last-child td {
+  border-bottom: none;
+}
+
+.cheapCell {
+  color: var(--color-green) !important;
+  font-weight: 600;
+}
+
+.peakCell {
+  color: var(--color-error) !important;
+  font-weight: 600;
+}
+
+.windowCell {
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-xs);
+}
+
+.forecastNote {
+  margin-top: var(--space-4);
+  color: var(--color-mid-grey) !important;
+}

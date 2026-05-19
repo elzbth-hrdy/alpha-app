@@ -1,0 +1,243 @@
+/* =============================================================================
+   Insights Page
+   ============================================================================= */
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: var(--content-xl);
+  margin-inline: auto;
+  width: 100%;
+  padding: var(--space-6) var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: var(--space-8) var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: var(--space-8);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Page title
+   --------------------------------------------------------------------------- */
+.pageTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------------
+   Section headings
+   --------------------------------------------------------------------------- */
+.sectionHeading {
+  margin-bottom: var(--space-4);
+}
+
+/* ---------------------------------------------------------------------------
+   Technology grid
+   --------------------------------------------------------------------------- */
+.techGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .techGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.healthInsight {
+  margin-top: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------------
+   Year on Year
+   --------------------------------------------------------------------------- */
+.yoyHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.yoySubtitle {
+  color: var(--color-mid-grey) !important;
+  margin-bottom: var(--space-4);
+}
+
+.yoyLegend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.yoyDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.yoyDotThis {
+  background-color: var(--color-yellow);
+}
+
+.yoyDotLast {
+  background-color: var(--color-mid-grey);
+}
+
+.yoyTable {
+  margin-top: var(--space-5);
+  overflow-x: auto;
+}
+
+.compTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.compTable th {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-mid-grey);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border-bottom: 2px solid var(--color-light-grey);
+}
+
+.compTable td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-light-grey);
+  color: var(--color-rich-black);
+}
+
+.compTable tr:last-child td {
+  border-bottom: none;
+}
+
+.lastYearCell {
+  color: var(--color-mid-grey) !important;
+}
+
+.posChange {
+  color: var(--color-green) !important;
+  font-weight: 600;
+}
+
+.negChange {
+  color: var(--color-error) !important;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+   Benchmark cards
+   --------------------------------------------------------------------------- */
+.benchmarkGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .benchmarkGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.benchmarkCard {
+  padding: var(--space-5);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-grey);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.benchmarkHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.benchmarkMetric {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-dark-grey);
+}
+
+.benchmarkValues {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.benchmarkValue {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.benchmarkValueNum {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-rich-black);
+  line-height: 1.2;
+}
+
+.benchmarkAvg {
+  color: var(--color-mid-grey) !important;
+}
+
+.benchmarkValueLabel {
+  color: var(--color-mid-grey) !important;
+}
+
+.benchmarkDivider {
+  width: 1px;
+  height: 32px;
+  background-color: var(--color-light-grey);
+  flex-shrink: 0;
+}
+
+.benchmarkDesc {
+  color: var(--color-mid-grey) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   Insight rows
+   --------------------------------------------------------------------------- */
+.insightRow {
+  margin-bottom: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------------
+   Tips grid
+   --------------------------------------------------------------------------- */
+.tipsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}

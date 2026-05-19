@@ -1,0 +1,59 @@
+/* =============================================================================
+   InsightCard — tip / comparison / saving / health card with accent border
+   ============================================================================= */
+
+.card {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-grey);
+  border-left-width: 4px;
+  border-radius: var(--radius-xl);
+}
+
+/* Left accent strip colour by type */
+.tip        { border-left-color: var(--color-teal); }
+.comparison { border-left-color: var(--color-green); }
+.saving     { border-left-color: var(--color-yellow); }
+.health     { border-left-color: var(--color-dark-grey); }
+
+.typeLabel {
+  flex-shrink: 0;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-mid-grey);
+  align-self: center;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-rich-black);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+.text {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-dark-grey);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.action {
+  align-self: flex-start;
+  margin-top: var(--space-1);
+}

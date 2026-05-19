@@ -1,0 +1,45 @@
+/* =============================================================================
+   PeriodSelector — segmented control tab bar
+   ============================================================================= */
+
+.wrapper {
+  display: inline-flex;
+  background-color: var(--color-off-white);
+  border-radius: var(--radius-full);
+  padding: var(--space-1);
+  gap: 2px;
+  width: 100%;
+}
+
+.tab {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-dark-grey);
+  font-family: var(--font-brand);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-default),
+    color var(--duration-fast) var(--ease-default);
+  white-space: nowrap;
+}
+
+.tab:hover:not(.tabActive) {
+  background-color: var(--color-light-grey);
+  color: var(--color-rich-black);
+}
+
+.tab:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+.tabActive {
+  background-color: var(--color-yellow);
+  color: var(--color-rich-black);
+  cursor: default;
+}

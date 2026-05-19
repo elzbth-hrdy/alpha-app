@@ -1,0 +1,23 @@
+/* =============================================================================
+   AppShell
+   ============================================================================= */
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* Bottom padding on mobile clears the fixed BottomTabBar (56px + safe area) */
+  padding-bottom: 72px;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding-bottom: 0;
+  }
+}
+
+.alphaBadge {
+  font-size: 10px !important;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+}

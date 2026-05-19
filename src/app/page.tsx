@@ -1,201 +1,207 @@
-import { Button } from "@/design-system/components/Button";
-import { Card, CardBody, CardHeader, CardFooter } from "@/design-system/components/Card";
-import { Heading, Body, Lead, Caption } from "@/design-system/components/Typography";
+import { StatCard, EnergyGauge, EnergyFlowBar } from "@/design-system/components/EnergyMetric";
+import { Card, CardBody } from "@/design-system/components/Card";
+import { Heading, Body, Caption } from "@/design-system/components/Typography";
 import { Badge } from "@/design-system/components/Badge";
-import { Alert } from "@/design-system/components/Alert";
-import { StatCard, EnergyFlowBar } from "@/design-system/components/EnergyMetric";
-import { TopNav } from "@/design-system/components/Navigation";
-import { PreferencesForm } from "./PreferencesForm";
+import { EnergyFlowDiagram } from "@/design-system/components/EnergyFlowDiagram";
+import { TechHealthCard } from "@/design-system/components/TechHealthCard";
+import { installedTech, liveData, todayHourly, periodTotals } from "@/lib/mock-data";
 import styles from "./page.module.css";
 
-const navItems = [
-  { label: "Dashboard", href: "/", active: true },
-  { label: "Energy", href: "/energy" },
-  { label: "Services", href: "/services" },
-  { label: "Account", href: "/account" },
-];
+export default function DashboardPage() {
+  const totals = periodTotals(todayHourly);
 
-export default function Home() {
   return (
-    <>
-      <TopNav items={navItems} />
+    <main className={styles.main}>
 
-      <main className={styles.main}>
+      {/* Page header */}
+      <div className={styles.pageHeader}>
+        <div className={styles.pageHeaderContent}>
+          <div className={styles.greeting}>
+            <div>
+              <Heading as="h1" level="h1" className={styles.greetingHeading}>
+                Good morning
+              </Heading>
+              <Body size="sm" className={styles.greetingDate}>
+                Monday, 19 May 2026
+              </Body>
+            </div>
+            <Badge variant="teal" dot>Live</Badge>
+          </div>
+        </div>
+      </div>
 
-        {/* Hero */}
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <Badge variant="teal" dot>Live data</Badge>
-            <Heading as="h1" level="h1" className={styles.heroHeading}>
-              Your clean energy, simply managed.
-            </Heading>
-            <Lead>
-              See what you&apos;re using, what you&apos;re generating, and how
-              much you&apos;re saving — all in one place.
-            </Lead>
-            <div className={styles.heroActions}>
-              <Button size="lg">Get started</Button>
-              <Button variant="secondary" size="lg">See how it works</Button>
+      <div className={styles.container}>
+
+        {/* Live stats */}
+        <section aria-label="Live readings">
+          <Heading level="h2" className={styles.sectionHeading}>Right now</Heading>
+          <div className={styles.statsGrid4}>
+            <StatCard
+              label="Solar"
+              value={String(liveData.solarKw)}
+              unit="kW"
+              variant="yellow"
+              icon={<SunIcon />}
+            />
+            <StatCard
+              label="Home load"
+              value={String(liveData.homeLoadKw)}
+              unit="kW"
+              variant="default"
+            />
+            <StatCard
+              label="Export"
+              value={String(liveData.exportKw)}
+              unit="kW"
+              variant="teal"
+            />
+            <div className={styles.batteryCard}>
+              <Body size="sm" className={styles.batteryLabel}>Battery</Body>
+              <EnergyGauge
+                value={liveData.batteryPercent}
+                max={100}
+                label="Battery charge level"
+                unit="%"
+                color="var(--color-green)"
+                size="sm"
+              />
+              <Caption className={styles.batteryCaption}>
+                {liveData.batteryKw > 0 ? `Charging +${liveData.batteryKw} kW` : "Discharging"}
+              </Caption>
             </div>
           </div>
         </section>
 
-        <div className={styles.container}>
+        {/* Energy flow diagram */}
+        <section>
+          <Heading level="h2" className={styles.sectionHeading}>Energy flow</Heading>
+          <Card variant="dark" padding="md">
+            <CardBody>
+              <EnergyFlowDiagram liveData={liveData} />
+            </CardBody>
+          </Card>
+        </section>
 
-          {/* Alert example */}
-          <Alert variant="success" title="Smart Export Guarantee activated">
-            You&apos;re now earning 15p/kWh for every unit you send back to the grid.
-          </Alert>
+        {/* Today's totals */}
+        <section aria-label="Today's totals">
+          <Heading level="h2" className={styles.sectionHeading}>Today so far</Heading>
+          <div className={styles.statsGrid4}>
+            <StatCard
+              label="Imported"
+              value={totals.import.toFixed(1)}
+              unit="kWh"
+              variant="default"
+            />
+            <StatCard
+              label="Generated"
+              value={totals.solar.toFixed(1)}
+              unit="kWh"
+              variant="yellow"
+            />
+            <StatCard
+              label="Exported"
+              value={totals.export.toFixed(1)}
+              unit="kWh"
+              variant="teal"
+            />
+            <StatCard
+              label="Carbon saved"
+              value={(totals.solar * 0.207).toFixed(1)}
+              unit="kg CO₂"
+              variant="green"
+            />
+          </div>
 
-          {/* Stats row */}
-          <section aria-label="Energy overview">
-            <Heading level="h2" className={styles.sectionHeading}>
-              Today&apos;s overview
-            </Heading>
-            <div className={styles.statsGrid}>
-              <StatCard
-                label="Imported today"
-                value="4.2"
-                unit="kWh"
-                variant="default"
-                trend="down"
-                trendLabel="12% less than yesterday"
+          {/* Flow bar summary */}
+          <Card padding="md" className={styles.flowCard}>
+            <CardBody>
+              <EnergyFlowBar
+                importKwh={Number(totals.import.toFixed(1))}
+                solarKwh={Number(totals.solar.toFixed(1))}
+                exportKwh={Number(totals.export.toFixed(1))}
               />
-              <StatCard
-                label="Solar generated"
-                value="8.7"
-                unit="kWh"
-                variant="yellow"
-                trend="up"
-                trendLabel="3.1 kWh more"
-              />
-              <StatCard
-                label="Exported today"
-                value="3.5"
-                unit="kWh"
-                variant="teal"
-              />
-              <StatCard
-                label="Carbon saved"
-                value="1.8"
-                unit="kg CO₂"
-                variant="green"
-              />
-            </div>
-          </section>
+            </CardBody>
+          </Card>
+        </section>
 
-          {/* Energy flow */}
-          <section>
-            <Heading level="h2" className={styles.sectionHeading}>
-              Energy flow
-            </Heading>
-            <Card>
-              <CardBody>
-                <EnergyFlowBar
-                  importKwh={4.2}
-                  solarKwh={8.7}
-                  exportKwh={3.5}
-                />
-              </CardBody>
-            </Card>
-          </section>
+        {/* Technology */}
+        <section>
+          <Heading level="h2" className={styles.sectionHeading}>Your technology</Heading>
+          <div className={styles.techGrid}>
+            {installedTech.map((tech) => (
+              <TechHealthCard key={tech.id} tech={tech} />
+            ))}
+          </div>
+        </section>
 
-          {/* Services cards */}
-          <section>
-            <Heading level="h2" className={styles.sectionHeading}>
-              Your services
-            </Heading>
-            <div className={styles.cardsGrid}>
-              <Card interactive padding="md">
-                <CardHeader>
-                  <div className={styles.cardTitleRow}>
-                    <Heading level="h3">Solar panels</Heading>
-                    <Badge variant="success">Active</Badge>
-                  </div>
-                </CardHeader>
-                <CardBody>
-                  <Body size="sm">
-                    Your 6&nbsp;kWp system is generating well. Last service: March 2025.
-                  </Body>
-                </CardBody>
-                <CardFooter>
-                  <Button variant="ghost">View details</Button>
-                </CardFooter>
-              </Card>
+        {/* Quick nav cards */}
+        <section aria-label="Quick access">
+          <div className={styles.quickNav}>
+            <a href="/ev" className={styles.quickNavCard}>
+              <span className={styles.quickNavIcon} aria-hidden="true"><EVIcon /></span>
+              <div>
+                <p className={styles.quickNavTitle}>EV charging schedule</p>
+                <p className={styles.quickNavSub}>Next cheap window: 00:00–07:00 tonight</p>
+              </div>
+              <ChevronIcon />
+            </a>
+            <a href="/history" className={styles.quickNavCard}>
+              <span className={styles.quickNavIcon} aria-hidden="true"><ChartIcon /></span>
+              <div>
+                <p className={styles.quickNavTitle}>Usage history</p>
+                <p className={styles.quickNavSub}>View your last 365 days</p>
+              </div>
+              <ChevronIcon />
+            </a>
+          </div>
+        </section>
 
-              <Card interactive padding="md">
-                <CardHeader>
-                  <div className={styles.cardTitleRow}>
-                    <Heading level="h3">Heat pump</Heading>
-                    <Badge variant="info">Installed</Badge>
-                  </div>
-                </CardHeader>
-                <CardBody>
-                  <Body size="sm">
-                    Running efficiently at COP&nbsp;3.8. Hot water scheduled for 6am–8am.
-                  </Body>
-                </CardBody>
-                <CardFooter>
-                  <Button variant="ghost">Manage schedule</Button>
-                </CardFooter>
-              </Card>
-
-              <Card interactive padding="md" variant="yellow">
-                <CardHeader>
-                  <div className={styles.cardTitleRow}>
-                    <Heading level="h3">Battery storage</Heading>
-                    <Badge variant="warning">72% charged</Badge>
-                  </div>
-                </CardHeader>
-                <CardBody>
-                  <Body size="sm">
-                    Charging from solar now. Set to discharge during peak hours 4–7pm.
-                  </Body>
-                </CardBody>
-                <CardFooter>
-                  <Button variant="secondary" size="sm">Adjust settings</Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </section>
-
-          {/* Form example */}
-          <section>
-            <Heading level="h2" className={styles.sectionHeading}>
-              Update your preferences
-            </Heading>
-            <PreferencesForm />
-          </section>
-
-          {/* Alert variants */}
-          <section>
-            <Heading level="h2" className={styles.sectionHeading}>
-              Notifications
-            </Heading>
-            <div className={styles.alertStack}>
-              <Alert variant="info" title="Tariff update coming">
-                Your Smart Flex rate changes on 1 June 2026. We&apos;ll email you the details.
-              </Alert>
-              <Alert variant="warning" title="High usage detected">
-                You&apos;ve used 20% more energy today than your weekly average.
-              </Alert>
-              <Alert variant="error" title="Meter reading overdue" dismissible>
-                Submit a reading to keep your bills accurate.
-              </Alert>
-            </div>
-          </section>
-
-        </div>
-      </main>
+      </div>
 
       <footer className={styles.footer}>
-        <div className={styles.container}>
-          <Caption>
-            © 2025 Good Energy Limited. Registered in England &amp; Wales No.&nbsp;3899276.
-            Good Energy, Monkton Reach, Monkton Hill, Chippenham, Wiltshire SN15&nbsp;1EE.
-          </Caption>
-        </div>
+        <Caption>
+          © 2025 Good Energy Limited. Registered in England &amp; Wales No.&nbsp;3899276.
+        </Caption>
       </footer>
-    </>
+    </main>
+  );
+}
+
+function SunIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function EVIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <rect x="2" y="6" width="16" height="9" rx="2" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M10.5 9.5L8.5 12.5h3L9.5 15.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ChartIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <rect x="3" y="11" width="3" height="6" rx="1" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="8.5" y="7" width="3" height="10" rx="1" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="14" y="4" width="3" height="13" rx="1" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

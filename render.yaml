@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: good-energy-alpha
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /

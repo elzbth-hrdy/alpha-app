@@ -1,0 +1,79 @@
+/* =============================================================================
+   TimeSeriesChart
+   ============================================================================= */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-dark-grey);
+}
+
+/* Custom tooltip */
+.tooltip {
+  background: var(--color-rich-black);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  min-width: 160px;
+}
+
+.tooltipLabel {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: rgb(255 255 255 / 0.6);
+  margin: 0 0 var(--space-2);
+}
+
+.tooltipRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  padding: 2px 0;
+}
+
+.tooltipDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tooltipName {
+  flex: 1;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.tooltipValue {
+  font-weight: 700;
+  color: var(--color-white);
+  white-space: nowrap;
+}

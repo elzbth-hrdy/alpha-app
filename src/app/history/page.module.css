@@ -1,0 +1,120 @@
+/* =============================================================================
+   History Page
+   ============================================================================= */
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: var(--content-xl);
+  margin-inline: auto;
+  width: 100%;
+  padding: var(--space-6) var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: var(--space-8) var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: var(--space-8);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Page title
+   --------------------------------------------------------------------------- */
+.pageTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------------
+   Section headings
+   --------------------------------------------------------------------------- */
+.sectionHeading {
+  margin-bottom: var(--space-4);
+}
+
+/* ---------------------------------------------------------------------------
+   Stats grid
+   --------------------------------------------------------------------------- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (min-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Balance summary
+   --------------------------------------------------------------------------- */
+.balanceSummary {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.balanceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-light-grey);
+}
+
+.balanceItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.balanceNet {
+  padding-top: var(--space-2);
+  border-top: 2px solid var(--color-light-grey);
+}
+
+.balanceLabel {
+  font-size: var(--text-sm);
+  color: var(--color-mid-grey);
+  font-weight: 500;
+}
+
+.balanceValue {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-rich-black);
+}
+
+.earningsValue {
+  color: var(--color-green);
+}
+
+/* ---------------------------------------------------------------------------
+   Export row
+   --------------------------------------------------------------------------- */
+.exportRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.exportNote {
+  color: var(--color-mid-grey) !important;
+}
