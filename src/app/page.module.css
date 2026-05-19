@@ -1,0 +1,225 @@
+/* =============================================================================
+   Home Page Styles
+   ============================================================================= */
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding-bottom: var(--space-16);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-xl);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Hero
+   --------------------------------------------------------------------------- */
+.hero {
+  background-color: var(--color-rich-black);
+  padding: var(--space-12) var(--space-4) var(--space-16);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background-color: var(--color-yellow);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .hero {
+    padding: var(--space-16) var(--space-6);
+  }
+  .hero::before {
+    width: 500px;
+    height: 500px;
+    top: -120px;
+    right: -100px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding: var(--space-20) var(--space-8);
+  }
+}
+
+.heroContent {
+  max-width: var(--content-xl);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: relative;
+  z-index: 1;
+}
+
+.heroHeading {
+  color: var(--color-yellow);
+  max-width: 14ch;
+  margin-top: var(--space-2);
+}
+
+.heroContent p {
+  color: rgb(255 255 255 / 0.8);
+  max-width: 48ch;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* Secondary button on dark bg */
+.heroActions button[class*="secondary"],
+.heroActions a[class*="secondary"] {
+  border-color: rgb(255 255 255 / 0.5);
+  color: var(--color-white);
+}
+
+/* ---------------------------------------------------------------------------
+   Section headings
+   --------------------------------------------------------------------------- */
+.sectionHeading {
+  margin-bottom: var(--space-4);
+}
+
+/* ---------------------------------------------------------------------------
+   Stats grid — 2 cols mobile, 4 cols desktop
+   --------------------------------------------------------------------------- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Service cards grid
+   --------------------------------------------------------------------------- */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cardTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------------------
+   Form
+   --------------------------------------------------------------------------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .formRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formToggles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--color-off-white);
+  border-radius: var(--radius-lg);
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------------
+   Alert stack
+   --------------------------------------------------------------------------- */
+.alertStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------------- */
+.footer {
+  background-color: var(--color-off-white);
+  border-top: 1px solid var(--color-light-grey);
+  padding: var(--space-6) var(--space-4);
+}
+
+.footer .container {
+  gap: 0;
+}

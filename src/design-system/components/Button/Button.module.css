@@ -1,0 +1,183 @@
+/* =============================================================================
+   Button Component
+   Good Energy Brand Guidelines 2025
+   ============================================================================= */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-family: var(--font-brand);
+  font-weight: 600;
+  letter-spacing: var(--tracking-normal);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-default),
+    border-color var(--duration-fast) var(--ease-default),
+    color var(--duration-fast) var(--ease-default),
+    box-shadow var(--duration-fast) var(--ease-default),
+    transform var(--duration-fast) var(--ease-default);
+  position: relative;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Sizes */
+.sm {
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-4);
+  min-height: 36px;
+}
+
+.md {
+  font-size: var(--text-base);
+  padding: var(--space-3) var(--space-6);
+  min-height: 48px;
+}
+
+.lg {
+  font-size: var(--text-md);
+  padding: var(--space-4) var(--space-8);
+  min-height: 56px;
+}
+
+/* Full width */
+.fullWidth {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: Primary
+   Yellow background, Rich Black text — the flagship CTA style.
+   --------------------------------------------------------------------------- */
+.primary {
+  background-color: var(--color-yellow);
+  color: var(--color-rich-black);
+  border-color: var(--color-yellow);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-yellow-hover);
+  border-color: var(--color-yellow-hover);
+}
+
+.primary:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: Secondary
+   Dark border, transparent fill — for secondary actions.
+   --------------------------------------------------------------------------- */
+.secondary {
+  background-color: transparent;
+  color: var(--color-rich-black);
+  border-color: var(--color-rich-black);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-rich-black);
+  color: var(--color-yellow);
+}
+
+.secondary:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: Ghost
+   Text only, no fill or border — for low-emphasis actions.
+   --------------------------------------------------------------------------- */
+.ghost {
+  background-color: transparent;
+  color: var(--color-teal-dark);
+  border-color: transparent;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+}
+
+.ghost:hover:not(:disabled) {
+  color: var(--color-teal);
+  text-decoration: none;
+}
+
+.ghost:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: Danger
+   For destructive actions.
+   --------------------------------------------------------------------------- */
+.danger {
+  background-color: var(--color-error);
+  color: var(--color-white);
+  border-color: var(--color-error);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: #b52920;
+  border-color: #b52920;
+}
+
+.danger:focus-visible {
+  outline: 3px solid var(--color-error);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Disabled & Loading states
+   --------------------------------------------------------------------------- */
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.loading .label {
+  opacity: 0;
+}
+
+.spinner {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------------------------------------------------------------------------
+   Icons
+   --------------------------------------------------------------------------- */
+.iconLeft,
+.iconRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}

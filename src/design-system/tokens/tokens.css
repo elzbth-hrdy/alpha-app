@@ -1,0 +1,173 @@
+/* =============================================================================
+   Good Energy Design Tokens
+   Source of truth for all brand colours, typography, spacing, and effects.
+   Based on Good Energy Brand Guidelines 2025.
+   ============================================================================= */
+
+@theme {
+  /* ---------------------------------------------------------------------------
+     Colour — Primary Palette
+     --------------------------------------------------------------------------- */
+  --color-yellow:       #FFDC14;
+  --color-yellow-hover: #F0CE00;
+  --color-yellow-muted: #FFF6B3;
+
+  --color-rich-black:   #020000;
+  --color-dark-grey:    #46413E;
+  --color-mid-grey:     #8B8784;
+  --color-light-grey:   #E1E1E1;
+  --color-off-white:    #F9F9F9;
+  --color-white:        #FFFFFF;
+
+  /* ---------------------------------------------------------------------------
+     Colour — Supporting Palette (B2C accents)
+     --------------------------------------------------------------------------- */
+  --color-teal:         #009BBF;
+  --color-teal-dark:    #0C657A;
+  --color-teal-forest:  #00464C;
+  --color-turquoise:    #52B8D0;
+  --color-turquoise-light: #A8DCE8;
+
+  --color-green:        #00B889;
+  --color-green-mid:    #6FC3BB;
+  --color-green-dark:   #4A7F7A;
+  --color-green-pale:   #9CD4CF;
+  --color-green-mist:   #CEEAE7;
+
+  /* ---------------------------------------------------------------------------
+     Colour — Data Visualisation Extended Palette
+     --------------------------------------------------------------------------- */
+  --color-dataviz-teal:   #009BBF;
+  --color-dataviz-sage:   #6FC3BB;
+  --color-dataviz-lime:   #A8CB63;
+  --color-dataviz-forest: #44B06C;
+  --color-dataviz-plum:   #AC2977;
+  --color-dataviz-violet: #614E9B;
+
+  /* ---------------------------------------------------------------------------
+     Colour — Semantic / Functional
+     --------------------------------------------------------------------------- */
+  --color-success:      #00B889;
+  --color-success-bg:   #E6F9F4;
+  --color-warning:      #FFDC14;
+  --color-warning-bg:   #FFFCE6;
+  --color-error:        #D93025;
+  --color-error-bg:     #FDECEA;
+  --color-info:         #009BBF;
+  --color-info-bg:      #E5F5FA;
+
+  /* ---------------------------------------------------------------------------
+     Typography — Font Families
+     Sharp Sans No.2 is the brand typeface. Place font files in /public/fonts/
+     and register them in src/app/layout.tsx. Arial is the approved substitute.
+     --------------------------------------------------------------------------- */
+  --font-brand:    "Sharp Sans No.2", var(--font-brand-loaded), "Plus Jakarta Sans", Arial, system-ui, sans-serif;
+  --font-system:   Arial, Helvetica, system-ui, sans-serif;
+  --font-mono:     "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  /* ---------------------------------------------------------------------------
+     Typography — Scale (mobile-first, rem)
+     --------------------------------------------------------------------------- */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-md:   1.125rem;  /* 18px */
+  --text-lg:   1.25rem;   /* 20px */
+  --text-xl:   1.5rem;    /* 24px */
+  --text-2xl:  1.875rem;  /* 30px */
+  --text-3xl:  2.25rem;   /* 36px */
+  --text-4xl:  3rem;      /* 48px */
+  --text-5xl:  3.75rem;   /* 60px */
+
+  /* ---------------------------------------------------------------------------
+     Typography — Line Heights
+     --------------------------------------------------------------------------- */
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* ---------------------------------------------------------------------------
+     Typography — Letter Spacing
+     Semibold headings: tracking 0. Bold subheadings: tracking 30 (0.03em).
+     --------------------------------------------------------------------------- */
+  --tracking-tight:   -0.01em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.03em;
+
+  /* ---------------------------------------------------------------------------
+     Spacing — 4px base grid
+     --------------------------------------------------------------------------- */
+  --space-0:   0px;
+  --space-1:   0.25rem;   /* 4px */
+  --space-2:   0.5rem;    /* 8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+
+  /* ---------------------------------------------------------------------------
+     Border Radius
+     --------------------------------------------------------------------------- */
+  --radius-sm:   0.25rem;  /* 4px */
+  --radius-md:   0.5rem;   /* 8px */
+  --radius-lg:   0.75rem;  /* 12px */
+  --radius-xl:   1rem;     /* 16px */
+  --radius-2xl:  1.5rem;   /* 24px */
+  --radius-full: 9999px;
+
+  /* ---------------------------------------------------------------------------
+     Shadows
+     --------------------------------------------------------------------------- */
+  --shadow-xs:  0 1px 2px 0 rgb(2 0 0 / 0.06);
+  --shadow-sm:  0 2px 4px 0 rgb(2 0 0 / 0.08);
+  --shadow-md:  0 4px 12px 0 rgb(2 0 0 / 0.10);
+  --shadow-lg:  0 8px 24px 0 rgb(2 0 0 / 0.12);
+  --shadow-xl:  0 16px 48px 0 rgb(2 0 0 / 0.14);
+
+  /* ---------------------------------------------------------------------------
+     Transitions
+     --------------------------------------------------------------------------- */
+  --duration-fast:   150ms;
+  --duration-normal: 250ms;
+  --duration-slow:   400ms;
+  --ease-default:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:         cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:        cubic-bezier(0, 0, 0.2, 1);
+
+  /* ---------------------------------------------------------------------------
+     Layout — Breakpoints (mobile-first)
+     --------------------------------------------------------------------------- */
+  --breakpoint-sm:   640px;
+  --breakpoint-md:   768px;
+  --breakpoint-lg:   1024px;
+  --breakpoint-xl:   1280px;
+  --breakpoint-2xl:  1536px;
+
+  /* ---------------------------------------------------------------------------
+     Layout — Container / Content widths
+     --------------------------------------------------------------------------- */
+  --content-xs:    360px;
+  --content-sm:    640px;
+  --content-md:    768px;
+  --content-lg:    1024px;
+  --content-xl:    1200px;
+
+  /* ---------------------------------------------------------------------------
+     Z-Index Scale
+     --------------------------------------------------------------------------- */
+  --z-base:       0;
+  --z-raised:     10;
+  --z-dropdown:   100;
+  --z-sticky:     200;
+  --z-overlay:    300;
+  --z-modal:      400;
+  --z-toast:      500;
+  --z-tooltip:    600;
+}

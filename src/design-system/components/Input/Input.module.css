@@ -1,0 +1,132 @@
+/* =============================================================================
+   Input Component
+   ============================================================================= */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-rich-black);
+  line-height: var(--leading-snug);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-light-grey);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-brand);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-rich-black);
+  transition:
+    border-color var(--duration-fast) var(--ease-default),
+    box-shadow var(--duration-fast) var(--ease-default);
+  appearance: none;
+}
+
+.input::placeholder {
+  color: var(--color-mid-grey);
+  font-weight: 500;
+}
+
+.input:hover:not(:disabled) {
+  border-color: var(--color-dark-grey);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgb(0 155 191 / 0.15);
+}
+
+.input:disabled {
+  background-color: var(--color-off-white);
+  border-color: var(--color-light-grey);
+  color: var(--color-mid-grey);
+  cursor: not-allowed;
+}
+
+/* With icons */
+.withIconLeft {
+  padding-left: var(--space-10);
+}
+
+.withIconRight {
+  padding-right: var(--space-10);
+}
+
+.iconLeft,
+.iconRight {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  color: var(--color-mid-grey);
+  pointer-events: none;
+}
+
+.iconLeft {
+  left: var(--space-4);
+}
+
+.iconRight {
+  right: var(--space-4);
+}
+
+/* Error state */
+.hasError .input {
+  border-color: var(--color-error);
+}
+
+.hasError .input:focus {
+  box-shadow: 0 0 0 3px rgb(217 48 37 / 0.15);
+}
+
+.hint {
+  font-size: var(--text-sm);
+  color: var(--color-dark-grey);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-error);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+/* Disabled wrapper */
+.disabled {
+  opacity: 0.6;
+}

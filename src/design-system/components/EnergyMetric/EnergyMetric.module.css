@@ -1,0 +1,199 @@
+/* =============================================================================
+   Energy Metric Components
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   StatCard
+   --------------------------------------------------------------------------- */
+.statCard {
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 140px;
+}
+
+@media (min-width: 640px) {
+  .statCard {
+    padding: var(--space-6);
+  }
+}
+
+/* Variants */
+.stat-default {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-grey);
+}
+
+.stat-yellow {
+  background-color: var(--color-yellow);
+  color: var(--color-rich-black);
+}
+
+.stat-dark {
+  background-color: var(--color-rich-black);
+  color: var(--color-white);
+}
+
+.stat-teal {
+  background-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+.stat-green {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.statTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statLabel {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  opacity: 0.8;
+  line-height: var(--leading-snug);
+}
+
+.statIcon {
+  display: flex;
+  opacity: 0.8;
+}
+
+.statValue {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.statNumber {
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+}
+
+@media (min-width: 640px) {
+  .statNumber {
+    font-size: var(--text-4xl);
+  }
+}
+
+.statUnit {
+  font-size: var(--text-md);
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.statTrend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+.trend-up    { color: var(--color-error); }
+.trend-down  { color: var(--color-success); }
+.trend-neutral { color: var(--color-mid-grey); }
+
+.stat-yellow .trend-up    { color: var(--color-rich-black); }
+.stat-yellow .trend-down  { color: var(--color-teal-forest); }
+.stat-dark .trend-up      { color: #FF7A72; }
+.stat-dark .trend-down    { color: var(--color-green); }
+
+.trendLabel {
+  line-height: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   EnergyGauge
+   --------------------------------------------------------------------------- */
+.gauge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gaugeCenter {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.gaugeValue {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-rich-black);
+}
+
+.gaugeUnit {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-mid-grey);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ---------------------------------------------------------------------------
+   EnergyFlowBar
+   --------------------------------------------------------------------------- */
+.flowBar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.flowLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+}
+
+.flowLegendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.flowLegendItem strong {
+  font-weight: 600;
+  color: var(--color-rich-black);
+}
+
+.flowDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.flowDotImport { background-color: var(--color-teal); }
+.flowDotSolar  { background-color: var(--color-yellow); }
+.flowDotExport { background-color: var(--color-green); }
+
+.flowTrack {
+  display: flex;
+  height: 12px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background-color: var(--color-light-grey);
+}
+
+.flowSegment {
+  height: 100%;
+  transition: width 0.8s var(--ease-out);
+}
+
+.flowSegmentImport { background-color: var(--color-teal); }
+.flowSegmentSolar  { background-color: var(--color-yellow); }
+.flowSegmentExport { background-color: var(--color-green); }

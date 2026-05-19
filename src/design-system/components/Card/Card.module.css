@@ -1,0 +1,108 @@
+/* =============================================================================
+   Card Component
+   ============================================================================= */
+
+.card {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Variants */
+.default {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-grey);
+}
+
+.elevated {
+  background-color: var(--color-white);
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.outlined {
+  background-color: transparent;
+  border: 2px solid var(--color-rich-black);
+}
+
+.yellow {
+  background-color: var(--color-yellow);
+  border: none;
+  color: var(--color-rich-black);
+}
+
+.dark {
+  background-color: var(--color-rich-black);
+  border: none;
+  color: var(--color-white);
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--color-yellow);
+}
+
+/* Padding */
+.pad-none { padding: 0; }
+.pad-sm   { padding: var(--space-4); }
+.pad-md   { padding: var(--space-6); }
+.pad-lg   { padding: var(--space-8); }
+
+@media (min-width: 640px) {
+  .pad-md { padding: var(--space-8); }
+  .pad-lg { padding: var(--space-10); }
+}
+
+/* Interactive */
+.interactive {
+  cursor: pointer;
+  transition:
+    box-shadow var(--duration-fast) var(--ease-default),
+    transform var(--duration-fast) var(--ease-default);
+}
+
+.interactive:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.interactive:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+/* Sub-components */
+.header {
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-light-grey);
+  margin-bottom: var(--space-4);
+}
+
+.dark .header {
+  border-bottom-color: rgb(255 255 255 / 0.15);
+}
+
+.yellow .header {
+  border-bottom-color: rgb(2 0 0 / 0.15);
+}
+
+.body {
+  flex: 1;
+}
+
+.footer {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-light-grey);
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.dark .footer {
+  border-top-color: rgb(255 255 255 / 0.15);
+}
