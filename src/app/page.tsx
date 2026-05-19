@@ -17,21 +17,28 @@ export default function DashboardPage() {
   return (
     <main className={styles.main}>
 
+      {/* Energy flow — full width, above everything */}
+      <section className={styles.flowSection} aria-label="Live energy flow">
+        <div className={styles.flowSectionInner}>
+          <div className={styles.flowSectionHeading}>
+            <Heading level="h2">Energy flow</Heading>
+            <Badge variant="teal" dot>Live</Badge>
+          </div>
+          <EnergyFlowDiagram liveData={liveData} />
+        </div>
+      </section>
+
       <div className={styles.container}>
 
         {/* Live stats */}
         <section aria-label="Live readings">
-          <div className={styles.sectionHeadingRow}>
-            <Heading level="h2" className={styles.sectionHeading}>Right now</Heading>
-            <Badge variant="teal" dot>Live</Badge>
-          </div>
+          <Heading level="h2" className={styles.sectionHeading}>Right now</Heading>
           <div className={styles.statsGrid5}>
             <StatCard
-              label="Solar"
+              label="Generation"
               value={String(liveData.solarKw)}
               unit="kW"
-              variant="yellow"
-              icon={<SunIcon />}
+              variant="green"
             />
             <StatCard
               label="Home load"
@@ -74,16 +81,6 @@ export default function DashboardPage() {
           </div>
         </section>
 
-        {/* Energy flow diagram */}
-        <section>
-          <Heading level="h2" className={styles.sectionHeading}>Energy flow</Heading>
-          <Card padding="md">
-            <CardBody>
-              <EnergyFlowDiagram liveData={liveData} />
-            </CardBody>
-          </Card>
-        </section>
-
         {/* Today's totals */}
         <section aria-label="Today's totals">
           <Heading level="h2" className={styles.sectionHeading}>Today so far</Heading>
@@ -92,13 +89,13 @@ export default function DashboardPage() {
               label="Imported"
               value={totals.import.toFixed(1)}
               unit="kWh"
-              variant="default"
+              variant="yellow"
             />
             <StatCard
               label="Generated"
               value={totals.solar.toFixed(1)}
               unit="kWh"
-              variant="yellow"
+              variant="green"
             />
             <StatCard
               label="Exported"
@@ -110,7 +107,7 @@ export default function DashboardPage() {
               label="Carbon saved"
               value={(totals.solar * 0.207).toFixed(1)}
               unit="kg CO₂"
-              variant="green"
+              variant="default"
             />
           </div>
 
@@ -159,25 +156,7 @@ export default function DashboardPage() {
         </section>
 
       </div>
-
-      <footer className={styles.footer}>
-        <Caption>
-          © 2025 Good Energy Limited. Registered in England &amp; Wales No.&nbsp;3899276.
-        </Caption>
-      </footer>
     </main>
-  );
-}
-
-function SunIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="1.5" />
-      <line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
   );
 }
 

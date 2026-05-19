@@ -8,6 +8,45 @@
   flex-direction: column;
 }
 
+/* ---------------------------------------------------------------------------
+   Energy flow — full-width banner section above the container
+   --------------------------------------------------------------------------- */
+.flowSection {
+  width: 100%;
+  background-color: var(--color-off-white);
+  border-bottom: 1px solid var(--color-light-grey);
+  padding: var(--space-6) var(--space-4) 0;
+}
+
+@media (min-width: 640px) {
+  .flowSection {
+    padding: var(--space-8) var(--space-6) 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flowSection {
+    padding: var(--space-8) var(--space-8) 0;
+  }
+}
+
+.flowSectionInner {
+  max-width: var(--content-xl);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.flowSectionHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------------
+   Content container
+   --------------------------------------------------------------------------- */
 .container {
   display: flex;
   flex-direction: column;
@@ -33,13 +72,6 @@
 /* ---------------------------------------------------------------------------
    Section headings
    --------------------------------------------------------------------------- */
-.sectionHeadingRow {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
-}
-
 .sectionHeading {
   margin-bottom: var(--space-4);
 }
@@ -59,7 +91,7 @@
   }
 }
 
-/* 5-card row: 2 columns on mobile, 3 on tablet, 5 on desktop */
+/* 5-card row: 2 columns → 3 → 5 */
 .statsGrid5 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -78,7 +110,7 @@
   }
 }
 
-/* Battery card — matches StatCard visually but holds the gauge */
+/* Battery card */
 .batteryCard {
   display: flex;
   flex-direction: column;
@@ -227,14 +259,4 @@
   font-size: var(--text-sm);
   color: var(--color-mid-grey);
   margin: 0;
-}
-
-/* ---------------------------------------------------------------------------
-   Footer
-   --------------------------------------------------------------------------- */
-.footer {
-  background-color: var(--color-off-white);
-  border-top: 1px solid var(--color-light-grey);
-  padding: var(--space-6) var(--space-4);
-  margin-top: auto;
 }

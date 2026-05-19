@@ -190,7 +190,7 @@ export function EnergyFlowBar({
         {solarKwh > 0 && (
           <div className={styles.flowLegendItem}>
             <span className={[styles.flowDot, styles.flowDotSolar].join(" ")} />
-            <span>Solar</span>
+            <span>Generation</span>
             <strong>{solarKwh} kWh</strong>
           </div>
         )}
@@ -205,7 +205,7 @@ export function EnergyFlowBar({
       <div
         className={styles.flowTrack}
         role="img"
-        aria-label={`Energy split: ${importKwh} kWh imported, ${solarKwh} kWh solar, ${exportKwh} kWh exported`}
+        aria-label={`Energy split: ${importKwh} kWh imported, ${solarKwh} kWh generated, ${exportKwh} kWh exported`}
       >
         {importPct > 0 && (
           <div

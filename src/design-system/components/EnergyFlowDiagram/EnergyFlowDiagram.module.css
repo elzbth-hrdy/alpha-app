@@ -6,28 +6,29 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  width: 100%;
 }
 
-/* On wider screens: diagram left, key right */
+/* On tablet+: diagram left (larger), key right (fills remaining space) */
 @media (min-width: 640px) {
   .wrapper {
     flex-direction: row;
-    align-items: center;
-    gap: var(--space-6);
+    align-items: stretch;
+    gap: 0;
   }
 }
 
 .svg {
   width: 100%;
   height: auto;
-  max-height: 300px;
-  flex-shrink: 1;
+  display: block;
 }
 
 @media (min-width: 640px) {
   .svg {
-    flex: 1 1 0;
+    flex: 3 1 0;
     min-width: 0;
+    max-height: 400px;
   }
 }
 
@@ -48,33 +49,47 @@
   }
 }
 
-/* Key — vertical list of live values */
+/* Key panel — sits to the right of the diagram */
 .strip {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-2);
-  flex-shrink: 0;
+  padding: var(--space-4);
+  background-color: var(--color-off-white);
+  border-radius: var(--radius-xl);
 }
 
 @media (min-width: 640px) {
   .strip {
+    flex: 1 1 0;
     grid-template-columns: 1fr;
-    min-width: 140px;
+    align-content: center;
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    padding: var(--space-5) var(--space-6);
+    gap: var(--space-3);
+    min-width: 180px;
   }
 }
 
 .pill {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  background-color: var(--color-off-white);
+  gap: var(--space-3);
+  background-color: var(--color-white);
   border-radius: var(--radius-lg);
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-light-grey);
+}
+
+@media (min-width: 640px) {
+  .pill {
+    padding: var(--space-3) var(--space-4);
+  }
 }
 
 .pillDot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   flex-shrink: 0;
 }

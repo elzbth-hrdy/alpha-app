@@ -38,9 +38,9 @@ const SERIES_CONFIG: Record<
   ChartSeries,
   { label: string; color: string; dataKey: string }
 > = {
-  import: { label: "Import",     color: "#009BBF", dataKey: "importKwh" },
-  solar:  { label: "Solar",      color: "#FFDC14", dataKey: "solarKwh"  },
-  export: { label: "Export",     color: "#00B889", dataKey: "exportKwh" },
+  import: { label: "Import",      color: "#FFDC14", dataKey: "importKwh" },
+  solar:  { label: "Generation",  color: "#00B889", dataKey: "solarKwh"  },
+  export: { label: "Export",      color: "#009BBF", dataKey: "exportKwh" },
 };
 
 function xFormatter(period: Period) {

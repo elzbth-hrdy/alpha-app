@@ -44,15 +44,15 @@ export function EnergyFlowDiagram({ liveData }: EnergyFlowDiagramProps) {
       id: "solar-home",
       d: cubicPath(NODES.solar.cx, NODES.solar.cy + 22, NODES.home.cx, NODES.home.cy - 22),
       active: solarToHome,
-      color: "#FFDC14",
-      label: "Solar powering home",
+      color: "#00B889",
+      label: "Generation powering home",
     },
     {
       id: "solar-battery",
       d: cubicPath(NODES.solar.cx + 20, NODES.solar.cy + 18, NODES.battery.cx - 15, NODES.battery.cy - 20),
       active: solarToBattery,
-      color: "#FFDC14",
-      label: "Solar charging battery",
+      color: "#00B889",
+      label: "Generation charging battery",
     },
     {
       id: "battery-home",
@@ -65,14 +65,14 @@ export function EnergyFlowDiagram({ liveData }: EnergyFlowDiagramProps) {
       id: "grid-home",
       d: cubicPath(NODES.grid.cx + 20, NODES.grid.cy + 15, NODES.home.cx - 20, NODES.home.cy - 15),
       active: gridToHome,
-      color: "#009BBF",
+      color: "#FFDC14",
       label: "Grid power imported",
     },
     {
       id: "home-grid",
       d: cubicPath(NODES.home.cx - 20, NODES.home.cy - 15, NODES.grid.cx + 20, NODES.grid.cy + 15),
       active: homeToGrid,
-      color: "#00B889",
+      color: "#009BBF",
       label: "Exporting to grid",
     },
   ];
@@ -123,10 +123,10 @@ export function EnergyFlowDiagram({ liveData }: EnergyFlowDiagramProps) {
         <FlowNode
           cx={NODES.solar.cx}
           cy={NODES.solar.cy}
-          label="Solar"
+          label="Generation"
           value={solarKw > 0 ? `${solarKw} kW` : "—"}
           active={solarKw > 0}
-          activeColor="#FFDC14"
+          activeColor="#00B889"
           icon={<SolarIcon />}
         />
         <FlowNode
@@ -153,17 +153,17 @@ export function EnergyFlowDiagram({ liveData }: EnergyFlowDiagramProps) {
           label="Grid"
           value={importKw > 0 ? `+${importKw} kW` : exportKw > 0 ? `−${exportKw} kW` : "—"}
           active={importKw > 0 || exportKw > 0}
-          activeColor={exportKw > 0 ? "#00B889" : "#009BBF"}
+          activeColor={exportKw > 0 ? "#009BBF" : "#FFDC14"}
           icon={<GridIcon />}
         />
       </svg>
 
-      {/* Live values strip */}
+      {/* Live values key */}
       <div className={styles.strip}>
-        <StatPill label="Solar" value={solarKw > 0 ? `${solarKw} kW` : "—"} color="#FFDC14" />
-        <StatPill label="Import" value={importKw > 0 ? `${importKw} kW` : "—"} color="#009BBF" />
-        <StatPill label="Export" value={exportKw > 0 ? `${exportKw} kW` : "—"} color="#00B889" />
-        <StatPill label="Load" value={`${homeLoadKw} kW`} color="#46413E" />
+        <StatPill label="Generation" value={solarKw > 0 ? `${solarKw} kW` : "—"} color="#00B889" />
+        <StatPill label="Import"     value={importKw > 0 ? `${importKw} kW` : "—"} color="#FFDC14" />
+        <StatPill label="Export"     value={exportKw > 0 ? `${exportKw} kW` : "—"} color="#009BBF" />
+        <StatPill label="Load"       value={`${homeLoadKw} kW`} color="#46413E" />
       </div>
     </div>
   );

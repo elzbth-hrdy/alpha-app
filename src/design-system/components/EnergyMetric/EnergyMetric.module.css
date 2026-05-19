@@ -177,9 +177,9 @@
   flex-shrink: 0;
 }
 
-.flowDotImport { background-color: var(--color-teal); }
-.flowDotSolar  { background-color: var(--color-yellow); }
-.flowDotExport { background-color: var(--color-green); }
+.flowDotImport { background-color: var(--color-yellow); }
+.flowDotSolar  { background-color: var(--color-green); }
+.flowDotExport { background-color: var(--color-teal); }
 
 .flowTrack {
   display: flex;
@@ -194,6 +194,6 @@
   transition: width 0.8s var(--ease-out);
 }
 
-.flowSegmentImport { background-color: var(--color-teal); }
-.flowSegmentSolar  { background-color: var(--color-yellow); }
-.flowSegmentExport { background-color: var(--color-green); }
+.flowSegmentImport { background-color: var(--color-yellow); }
+.flowSegmentSolar  { background-color: var(--color-green); }
+.flowSegmentExport { background-color: var(--color-teal); }

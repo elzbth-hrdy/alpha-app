@@ -68,13 +68,13 @@ export function HistoryClient() {
             label="Imported"
             value={totals.import.toFixed(1)}
             unit="kWh"
-            variant="default"
+            variant="yellow"
           />
           <StatCard
             label="Generated"
             value={totals.solar.toFixed(1)}
             unit="kWh"
-            variant="yellow"
+            variant="green"
           />
           <StatCard
             label="Exported"
