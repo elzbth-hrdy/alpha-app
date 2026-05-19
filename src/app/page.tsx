@@ -4,38 +4,28 @@ import { Heading, Body, Caption } from "@/design-system/components/Typography";
 import { Badge } from "@/design-system/components/Badge";
 import { EnergyFlowDiagram } from "@/design-system/components/EnergyFlowDiagram";
 import { TechHealthCard } from "@/design-system/components/TechHealthCard";
-import { installedTech, liveData, todayHourly, periodTotals } from "@/lib/mock-data";
+import { installedTech, liveData, todayHourly, periodTotals, accountBalance } from "@/lib/mock-data";
 import styles from "./page.module.css";
 
 export default function DashboardPage() {
   const totals = periodTotals(todayHourly);
+  const balance = accountBalance;
+  const balanceLabel = balance.balancePounds >= 0
+    ? `£${balance.balancePounds.toFixed(2)} credit`
+    : `£${Math.abs(balance.balancePounds).toFixed(2)} debit`;
 
   return (
     <main className={styles.main}>
-
-      {/* Page header */}
-      <div className={styles.pageHeader}>
-        <div className={styles.pageHeaderContent}>
-          <div className={styles.greeting}>
-            <div>
-              <Heading as="h1" level="h1" className={styles.greetingHeading}>
-                Good morning
-              </Heading>
-              <Body size="sm" className={styles.greetingDate}>
-                Monday, 19 May 2026
-              </Body>
-            </div>
-            <Badge variant="teal" dot>Live</Badge>
-          </div>
-        </div>
-      </div>
 
       <div className={styles.container}>
 
         {/* Live stats */}
         <section aria-label="Live readings">
-          <Heading level="h2" className={styles.sectionHeading}>Right now</Heading>
-          <div className={styles.statsGrid4}>
+          <div className={styles.sectionHeadingRow}>
+            <Heading level="h2" className={styles.sectionHeading}>Right now</Heading>
+            <Badge variant="teal" dot>Live</Badge>
+          </div>
+          <div className={styles.statsGrid5}>
             <StatCard
               label="Solar"
               value={String(liveData.solarKw)}
@@ -69,13 +59,25 @@ export default function DashboardPage() {
                 {liveData.batteryKw > 0 ? `Charging +${liveData.batteryKw} kW` : "Discharging"}
               </Caption>
             </div>
+            <div className={styles.balanceCard}>
+              <Body size="sm" className={styles.balanceLabel}>Account balance</Body>
+              <span className={[
+                styles.balanceAmount,
+                balance.balancePounds >= 0 ? styles.balanceCredit : styles.balanceDebit,
+              ].join(" ")}>
+                {balanceLabel}
+              </span>
+              <Caption className={styles.balanceCaption}>
+                Next payment £{balance.nextPaymentPounds.toFixed(2)} on {balance.nextPaymentDate}
+              </Caption>
+            </div>
           </div>
         </section>
 
         {/* Energy flow diagram */}
         <section>
           <Heading level="h2" className={styles.sectionHeading}>Energy flow</Heading>
-          <Card variant="dark" padding="md">
+          <Card padding="md">
             <CardBody>
               <EnergyFlowDiagram liveData={liveData} />
             </CardBody>

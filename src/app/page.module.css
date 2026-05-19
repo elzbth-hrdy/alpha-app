@@ -31,57 +31,15 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Page header / greeting
-   --------------------------------------------------------------------------- */
-.pageHeader {
-  background-color: var(--color-rich-black);
-  padding: var(--space-6) var(--space-4) var(--space-8);
-}
-
-@media (min-width: 640px) {
-  .pageHeader {
-    padding: var(--space-8) var(--space-6);
-  }
-}
-
-@media (min-width: 1024px) {
-  .pageHeader {
-    padding: var(--space-10) var(--space-8);
-  }
-}
-
-.pageHeaderContent {
-  max-width: var(--content-xl);
-  margin-inline: auto;
-}
-
-.greeting {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-}
-
-.greetingHeading {
-  color: var(--color-yellow);
-  font-size: var(--text-2xl);
-  margin: 0;
-}
-
-@media (min-width: 640px) {
-  .greetingHeading {
-    font-size: var(--text-3xl);
-  }
-}
-
-.greetingDate {
-  color: rgb(255 255 255 / 0.6) !important;
-  margin-top: var(--space-1);
-}
-
-/* ---------------------------------------------------------------------------
    Section headings
    --------------------------------------------------------------------------- */
+.sectionHeadingRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
 .sectionHeading {
   margin-bottom: var(--space-4);
 }
@@ -98,6 +56,25 @@
 @media (min-width: 1024px) {
   .statsGrid4 {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 5-card row: 2 columns on mobile, 3 on tablet, 5 on desktop */
+.statsGrid5 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .statsGrid5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .statsGrid5 {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -121,6 +98,43 @@
 }
 
 .batteryCaption {
+  color: var(--color-mid-grey) !important;
+  font-size: var(--text-xs) !important;
+}
+
+/* Account balance card */
+.balanceCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-grey);
+  border-radius: var(--radius-xl);
+}
+
+.balanceLabel {
+  font-weight: 600;
+  color: var(--color-dark-grey);
+  opacity: 0.8;
+  margin: 0 !important;
+}
+
+.balanceAmount {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.balanceCredit {
+  color: var(--color-green);
+}
+
+.balanceDebit {
+  color: var(--color-error);
+}
+
+.balanceCaption {
   color: var(--color-mid-grey) !important;
   font-size: var(--text-xs) !important;
 }

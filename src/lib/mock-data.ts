@@ -141,6 +141,22 @@ export const liveData: LiveData = {
   batteryPercent: 72,
 };
 
+// ─── Account Balance ─────────────────────────────────────────────────────────
+
+export interface AccountBalance {
+  balancePounds: number;    // positive = in credit, negative = in debit
+  lastUpdated: string;
+  nextPaymentDate: string;
+  nextPaymentPounds: number;
+}
+
+export const accountBalance: AccountBalance = {
+  balancePounds: 47.32,
+  lastUpdated: "19 May 2026",
+  nextPaymentDate: "1 Jun 2026",
+  nextPaymentPounds: 112.00,
+};
+
 // ─── EV Status ───────────────────────────────────────────────────────────────
 
 export interface EVStatus {

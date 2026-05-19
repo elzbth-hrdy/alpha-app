@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { TopNav, BottomTabBar } from "@/design-system/components/Navigation";
 import { Badge } from "@/design-system/components/Badge";
@@ -23,6 +24,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       : pathname.startsWith(item.href),
   }));
 
+  const logo = (
+    <Image src="/logo.svg" alt="Good Energy" width={140} height={36} priority />
+  );
+
   const alphaBadge = (
     <Badge variant="yellow" className={styles.alphaBadge}>
       Alpha
@@ -31,7 +36,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <TopNav items={navItems} actions={alphaBadge} />
+      <TopNav items={navItems} logo={logo} actions={alphaBadge} />
       <div className={styles.content}>{children}</div>
       <BottomTabBar items={navItems} />
     </>
