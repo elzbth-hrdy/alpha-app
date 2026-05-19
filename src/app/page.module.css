@@ -9,24 +9,25 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Energy flow — full-width banner section above the container
+   Home energy system — full-width yellow hero (diagram + live stats)
    --------------------------------------------------------------------------- */
 .flowSection {
   width: 100%;
-  background-color: var(--color-yellow-muted);
+  background-color: var(--color-yellow);
   border-bottom: 1px solid var(--color-yellow-hover);
-  padding: var(--space-6) var(--space-4) 0;
+  padding: var(--space-5) var(--space-4) var(--space-5);
+  position: relative;
 }
 
 @media (min-width: 640px) {
   .flowSection {
-    padding: var(--space-8) var(--space-6) 0;
+    padding: var(--space-6) var(--space-6) var(--space-6);
   }
 }
 
 @media (min-width: 1024px) {
   .flowSection {
-    padding: var(--space-8) var(--space-8) 0;
+    padding: var(--space-6) var(--space-8) var(--space-6);
   }
 }
 
@@ -38,10 +39,73 @@
   gap: var(--space-4);
 }
 
-.flowSectionHeading {
+/* Live badge — overlaid top-right of the yellow section */
+.liveBadge {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .liveBadge {
+    top: var(--space-5);
+    right: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .liveBadge {
+    right: var(--space-8);
+  }
+}
+
+/* Live stats row inside the yellow section */
+.liveStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .liveStats {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+/* Compact stat card override — smaller padding on desktop */
+.liveStatCard {
+  padding: var(--space-3) var(--space-4) !important;
+}
+
+@media (min-width: 640px) {
+  .liveStatCard {
+    padding: var(--space-3) var(--space-4) !important;
+  }
+}
+
+/* Battery card inside the live stats row */
+.batteryCard {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-grey);
+  border-radius: var(--radius-xl);
+}
+
+.batteryLabel {
+  font-weight: 600;
+  color: var(--color-dark-grey);
+  opacity: 0.8;
+  margin: 0 !important;
+}
+
+.batteryCaption {
+  color: var(--color-mid-grey) !important;
+  font-size: var(--text-xs) !important;
 }
 
 /* ---------------------------------------------------------------------------
@@ -91,49 +155,6 @@
   .statsGrid4 {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-
-/* 5-card row: 2 columns → 3 → 5 */
-.statsGrid5 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-3);
-}
-
-@media (min-width: 640px) {
-  .statsGrid5 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .statsGrid5 {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-/* Battery card */
-.batteryCard {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-light-grey);
-  border-radius: var(--radius-xl);
-}
-
-.batteryLabel {
-  font-weight: 600;
-  color: var(--color-dark-grey);
-  opacity: 0.8;
-  margin: 0 !important;
-}
-
-.batteryCaption {
-  color: var(--color-mid-grey) !important;
-  font-size: var(--text-xs) !important;
 }
 
 /* Account balance section */

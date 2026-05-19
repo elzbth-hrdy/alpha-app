@@ -200,13 +200,6 @@ export function EnergyFlowDiagram({ liveData }: EnergyFlowDiagramProps) {
         />
       </svg>
 
-      {/* ── Live values key ─────────────────────────────────────────────── */}
-      <div className={styles.strip}>
-        <StatPill label="Solar"  value={solarKw > 0 ? `${solarKw} kW` : "—"}    color="#00B889" />
-        <StatPill label="Import" value={importKw > 0 ? `${importKw} kW` : "—"}  color="#FFDC14" />
-        <StatPill label="Export" value={exportKw > 0 ? `${exportKw} kW` : "—"}  color="#009BBF" />
-        <StatPill label="Load"   value={`${homeLoadKw} kW`}                      color="#46413E" />
-      </div>
     </div>
   );
 }
@@ -290,18 +283,6 @@ function SatelliteNode({ cx, cy, label, value, active, activeColor, icon }: Sate
         {value}
       </text>
     </g>
-  );
-}
-
-/* ── Stat pill ────────────────────────────────────────────────────────────── */
-
-function StatPill({ label, value, color }: { label: string; value: string; color: string }) {
-  return (
-    <div className={styles.pill}>
-      <span className={styles.pillDot} style={{ background: color }} />
-      <span className={styles.pillLabel}>{label}</span>
-      <span className={styles.pillValue}>{value}</span>
-    </div>
   );
 }
 

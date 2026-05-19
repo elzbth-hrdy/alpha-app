@@ -19,40 +19,33 @@ export default function DashboardPage() {
   return (
     <main className={styles.main}>
 
-      {/* Energy flow — full width, above everything */}
-      <section className={styles.flowSection} aria-label="Live energy flow">
+      {/* Your home energy system — full-width yellow hero */}
+      <section className={styles.flowSection} aria-label="Your home energy system">
         <div className={styles.flowSectionInner}>
-          <div className={styles.flowSectionHeading}>
-            <Heading level="h2">Energy flow</Heading>
-            <Badge variant="teal" dot>Live</Badge>
-          </div>
           <EnergyFlowDiagram liveData={liveData} />
-        </div>
-      </section>
 
-      <div className={styles.container}>
-
-        {/* Live stats */}
-        <section aria-label="Live readings">
-          <Heading level="h2" className={styles.sectionHeading}>Right now</Heading>
-          <div className={styles.statsGrid4}>
+          {/* Live stats — combined with diagram */}
+          <div className={styles.liveStats}>
             <StatCard
               label="Generation"
               value={String(liveData.solarKw)}
               unit="kW"
               variant="green"
+              className={styles.liveStatCard}
             />
             <StatCard
               label="Home load"
               value={String(liveData.homeLoadKw)}
               unit="kW"
               variant="default"
+              className={styles.liveStatCard}
             />
             <StatCard
               label="Export"
               value={String(liveData.exportKw)}
               unit="kW"
               variant="teal"
+              className={styles.liveStatCard}
             />
             <div className={styles.batteryCard}>
               <Body size="sm" className={styles.batteryLabel}>Battery</Body>
@@ -69,7 +62,15 @@ export default function DashboardPage() {
               </Caption>
             </div>
           </div>
-        </section>
+
+          {/* Live badge */}
+          <div className={styles.liveBadge}>
+            <Badge variant="teal" dot>Live</Badge>
+          </div>
+        </div>
+      </section>
+
+      <div className={styles.container}>
 
         {/* Account balance */}
         <section aria-label="Account balance">

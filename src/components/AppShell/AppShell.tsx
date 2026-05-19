@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { TopNav, BottomTabBar } from "@/design-system/components/Navigation";
-import { Badge } from "@/design-system/components/Badge";
 import styles from "./AppShell.module.css";
 
 const NAV_ITEMS_BASE = [
@@ -28,15 +27,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <Image src="/Logo.Secondary.RGB.svg" alt="Good Energy" width={160} height={43} priority />
   );
 
-  const alphaBadge = (
-    <Badge variant="default" className={styles.alphaBadge}>
-      Alpha
-    </Badge>
-  );
-
   return (
     <>
-      <TopNav items={navItems} logo={logo} actions={alphaBadge} />
+      <TopNav items={navItems} logo={logo} />
+      <div className={styles.alphaBanner} role="banner" aria-label="Alpha notice">
+        <div className={styles.alphaBannerInner}>
+          <InfoIcon />
+          <span>Alpha experience — features and data are for testing only and may not reflect your real account.</span>
+        </div>
+      </div>
       <div className={styles.content}>{children}</div>
       <BottomTabBar items={navItems} />
     </>
@@ -44,7 +43,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 }
 
 /* ---------------------------------------------------------------------------
-   Nav icons — inline SVG, no external dependency
+   Nav icons
    --------------------------------------------------------------------------- */
 
 function HomeIcon() {
@@ -82,6 +81,16 @@ function InsightsIcon() {
       <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.5" />
       <line x1="10" y1="9" x2="10" y2="13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       <circle cx="10" cy="7" r="0.875" fill="currentColor" />
+    </svg>
+  );
+}
+
+function InfoIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.4" />
+      <line x1="8" y1="7" x2="8" y2="11.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="8" cy="5.5" r="0.7" fill="currentColor" />
     </svg>
   );
 }
