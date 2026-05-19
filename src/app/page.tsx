@@ -4,6 +4,7 @@ import { Heading, Body, Caption } from "@/design-system/components/Typography";
 import { Badge } from "@/design-system/components/Badge";
 import { EnergyFlowDiagram } from "@/design-system/components/EnergyFlowDiagram";
 import { TechHealthCard } from "@/design-system/components/TechHealthCard";
+import { MatchedEnergyWidget } from "@/design-system/components/MatchedEnergyWidget";
 import { installedTech, liveData, todayHourly, periodTotals, accountBalance } from "@/lib/mock-data";
 import styles from "./page.module.css";
 
@@ -79,6 +80,12 @@ export default function DashboardPage() {
               </Caption>
             </div>
           </div>
+        </section>
+
+        {/* Matched energy mix */}
+        <section aria-label="Matched energy mix">
+          <Heading level="h2" className={styles.sectionHeading}>Matched energy mix</Heading>
+          <MatchedEnergyWidget />
         </section>
 
         {/* Today's totals */}
