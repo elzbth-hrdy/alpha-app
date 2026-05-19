@@ -25,7 +25,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   }));
 
   const logo = (
-    <Image src="/logo.svg" alt="Good Energy" width={140} height={36} priority />
+    <Image src="/Logo.Secondary.RGB.svg" alt="Good Energy" width={160} height={43} priority />
   );
 
   const alphaBadge = (
