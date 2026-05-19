@@ -2,6 +2,7 @@ import { StatCard, EnergyGauge, EnergyFlowBar } from "@/design-system/components
 import { Card, CardBody } from "@/design-system/components/Card";
 import { Heading, Body, Caption } from "@/design-system/components/Typography";
 import { Badge } from "@/design-system/components/Badge";
+import { Button } from "@/design-system/components/Button";
 import { EnergyFlowDiagram } from "@/design-system/components/EnergyFlowDiagram";
 import { TechHealthCard } from "@/design-system/components/TechHealthCard";
 import { MatchedEnergyWidget } from "@/design-system/components/MatchedEnergyWidget";
@@ -34,7 +35,7 @@ export default function DashboardPage() {
         {/* Live stats */}
         <section aria-label="Live readings">
           <Heading level="h2" className={styles.sectionHeading}>Right now</Heading>
-          <div className={styles.statsGrid5}>
+          <div className={styles.statsGrid4}>
             <StatCard
               label="Generation"
               value={String(liveData.solarKw)}
@@ -67,19 +68,35 @@ export default function DashboardPage() {
                 {liveData.batteryKw > 0 ? `Charging +${liveData.batteryKw} kW` : "Discharging"}
               </Caption>
             </div>
-            <div className={styles.balanceCard}>
-              <Body size="sm" className={styles.balanceLabel}>Account balance</Body>
-              <span className={[
-                styles.balanceAmount,
-                balance.balancePounds >= 0 ? styles.balanceCredit : styles.balanceDebit,
-              ].join(" ")}>
-                {balanceLabel}
-              </span>
-              <Caption className={styles.balanceCaption}>
-                Next payment £{balance.nextPaymentPounds.toFixed(2)} on {balance.nextPaymentDate}
-              </Caption>
-            </div>
           </div>
+        </section>
+
+        {/* Account balance */}
+        <section aria-label="Account balance">
+          <Heading level="h2" className={styles.sectionHeading}>Account</Heading>
+          <Card padding="md">
+            <CardBody>
+              <div className={styles.accountRow}>
+                <div className={styles.accountBalance}>
+                  <Body size="sm" className={styles.accountBalanceLabel}>Balance</Body>
+                  <span className={[
+                    styles.accountBalanceAmount,
+                    balance.balancePounds >= 0 ? styles.balanceCredit : styles.balanceDebit,
+                  ].join(" ")}>
+                    {balanceLabel}
+                  </span>
+                  <Caption className={styles.accountBalanceCaption}>
+                    Next payment £{balance.nextPaymentPounds.toFixed(2)} on {balance.nextPaymentDate}
+                  </Caption>
+                </div>
+                <div className={styles.accountActions}>
+                  <Button variant="secondary" size="sm">Make a payment</Button>
+                  <Button variant="secondary" size="sm">Change Direct Debit</Button>
+                  <Button variant="ghost" size="sm">Request a refund</Button>
+                </div>
+              </div>
+            </CardBody>
+          </Card>
         </section>
 
         {/* Matched energy mix */}

@@ -134,26 +134,37 @@
   font-size: var(--text-xs) !important;
 }
 
-/* Account balance card */
-.balanceCard {
+/* Account balance section */
+.accountRow {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-light-grey);
-  border-radius: var(--radius-xl);
+  gap: var(--space-5);
 }
 
-.balanceLabel {
+@media (min-width: 640px) {
+  .accountRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+}
+
+.accountBalance {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.accountBalanceLabel {
   font-weight: 600;
   color: var(--color-dark-grey);
   opacity: 0.8;
   margin: 0 !important;
 }
 
-.balanceAmount {
-  font-size: var(--text-xl);
+.accountBalanceAmount {
+  font-size: var(--text-2xl);
   font-weight: 700;
   line-height: 1.1;
 }
@@ -166,9 +177,16 @@
   color: var(--color-error);
 }
 
-.balanceCaption {
+.accountBalanceCaption {
   color: var(--color-mid-grey) !important;
   font-size: var(--text-xs) !important;
+}
+
+.accountActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  flex-shrink: 0;
 }
 
 /* ---------------------------------------------------------------------------
