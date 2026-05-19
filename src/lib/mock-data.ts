@@ -406,3 +406,87 @@ export const insights: Insight[] = [
     body: "Your system generated 15% more than similar 6 kWp installations nearby last month.",
   },
 ];
+
+// ─── Matched Energy Data ──────────────────────────────────────────────────────
+// Sourced from matched.energy (CC BY-NC-4.0). Scores are at portfolio level.
+// Data lags ~18 working days; updates roughly monthly with new settlement runs.
+// TODO: replace mock with live endpoint discovered via matched.energy DevTools
+//   Network tab → navigate to /clean-power-index/good-energy → note XHR calls.
+//   Ref: https://matched.energy/methodology
+
+export interface MatchedMonthlyScore {
+  month: string;
+  score: number; // 0–1
+}
+
+export interface MatchedSupplierScore {
+  name: string;
+  score: number; // 0–1
+  isUs: boolean;
+}
+
+export interface MatchedTechMix {
+  windOffshore: number;
+  windOnshore: number;
+  solar: number;
+  hydro: number;
+  biomass: number;
+}
+
+export interface MatchedEnergyData {
+  supplier: string;
+  compliancePeriod: string;
+  lastUpdated: string;
+  halfHourlyScore: number;
+  rank: number;
+  totalSuppliers: number;
+  techMix: MatchedTechMix;
+  // Compliance year Apr–Mar monthly scores
+  monthlyScores: MatchedMonthlyScore[];
+  // Illustrative selection of UK suppliers for comparison
+  supplierRankings: MatchedSupplierScore[];
+}
+
+export const matchedEnergyData: MatchedEnergyData = {
+  supplier: "Good Energy",
+  compliancePeriod: "Apr 2024 – Mar 2025",
+  lastUpdated: "May 2026",
+  halfHourlyScore: 0.88,
+  rank: 1,
+  totalSuppliers: 14,
+  techMix: {
+    windOffshore: 0.42,
+    windOnshore: 0.23,
+    solar: 0.18,
+    hydro: 0.10,
+    biomass: 0.07,
+  },
+  // Apr→Mar compliance year — higher in summer (solar), lower in winter evenings
+  monthlyScores: [
+    { month: "Apr", score: 0.91 },
+    { month: "May", score: 0.94 },
+    { month: "Jun", score: 0.96 },
+    { month: "Jul", score: 0.95 },
+    { month: "Aug", score: 0.93 },
+    { month: "Sep", score: 0.89 },
+    { month: "Oct", score: 0.84 },
+    { month: "Nov", score: 0.79 },
+    { month: "Dec", score: 0.74 },
+    { month: "Jan", score: 0.72 },
+    { month: "Feb", score: 0.76 },
+    { month: "Mar", score: 0.82 },
+  ],
+  // Approximate scores from matched.energy public index — illustrative only
+  supplierRankings: [
+    { name: "Good Energy",    score: 0.88, isUs: true  },
+    { name: "Octopus Energy", score: 0.69, isUs: false },
+    { name: "So Energy",      score: 0.50, isUs: false },
+    { name: "Ecotricity",     score: 0.44, isUs: false },
+    { name: "E.ON Next",      score: 0.35, isUs: false },
+    { name: "EDF Energy",     score: 0.31, isUs: false },
+    { name: "Ovo Energy",     score: 0.24, isUs: false },
+    { name: "British Gas",    score: 0.19, isUs: false },
+    { name: "Shell Energy",   score: 0.15, isUs: false },
+    { name: "Scottish Power", score: 0.13, isUs: false },
+  ],
+};

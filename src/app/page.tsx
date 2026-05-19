@@ -85,7 +85,11 @@ export default function DashboardPage() {
         {/* Matched energy mix */}
         <section aria-label="Matched energy mix">
           <Heading level="h2" className={styles.sectionHeading}>Matched energy mix</Heading>
-          <MatchedEnergyWidget />
+          <Card padding="md">
+            <CardBody>
+              <MatchedEnergyWidget />
+            </CardBody>
+          </Card>
         </section>
 
         {/* Today's totals */}
