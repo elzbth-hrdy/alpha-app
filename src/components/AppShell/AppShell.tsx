@@ -29,7 +29,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   );
 
   const alphaBadge = (
-    <Badge variant="yellow" className={styles.alphaBadge}>
+    <Badge variant="default" className={styles.alphaBadge}>
       Alpha
     </Badge>
   );

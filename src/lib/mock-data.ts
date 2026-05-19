@@ -130,6 +130,8 @@ export interface LiveData {
   batteryKw: number;      // positive = charging, negative = discharging
   homeLoadKw: number;
   batteryPercent: number;
+  evKw: number;           // positive = charging
+  heatPumpKw: number;     // positive = running
 }
 
 export const liveData: LiveData = {
@@ -139,6 +141,8 @@ export const liveData: LiveData = {
   batteryKw: 2.1,
   homeLoadKw: 2.0,
   batteryPercent: 72,
+  evKw: 0,
+  heatPumpKw: 1.2,
 };
 
 // ─── Account Balance ─────────────────────────────────────────────────────────

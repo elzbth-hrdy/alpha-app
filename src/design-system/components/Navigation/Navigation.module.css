@@ -9,8 +9,8 @@
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-light-grey);
+  background-color: var(--color-yellow);
+  border-bottom: 1px solid var(--color-yellow-hover);
 }
 
 .topNavInner {
@@ -69,7 +69,7 @@
   border-radius: var(--radius-md);
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-dark-grey);
+  color: var(--color-rich-black);
   text-decoration: none;
   transition:
     color var(--duration-fast) var(--ease-default),
@@ -78,17 +78,18 @@
 
 .navLink:hover {
   color: var(--color-rich-black);
-  background-color: var(--color-off-white);
+  background-color: rgba(0, 0, 0, 0.08);
   text-decoration: none;
 }
 
 .navLinkActive {
   color: var(--color-rich-black);
-  background-color: var(--color-yellow);
+  background-color: var(--color-white);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
 }
 
 .navLinkActive:hover {
-  background-color: var(--color-yellow-hover);
+  background-color: var(--color-white);
 }
 
 .topNavActions {
@@ -113,7 +114,7 @@
 }
 
 .menuButton:hover {
-  background-color: var(--color-off-white);
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
 .menuButton:focus-visible {
